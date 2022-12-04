@@ -5,14 +5,15 @@ vector<vector<int>> pairSum(vector<int> &arr, int s){
     for(int i=0;i<arr.size();i++){
         int val = s-arr[i];
         if(m[val]){
-            for(int i=1;i<=m[val];i++){
+            for(int j=1;j<=m[val];j++){
             vector<int> temp;
-            temp.push_back(val);
-            temp.push_back(arr[i]); 
+            temp.push_back(min(val,arr[i]));
+            temp.push_back(max(arr[i],val)); 
             ans.push_back(temp);
             }
         }
         m[arr[i]]++;
     }
+    sort(ans.begin(),ans.end());
           return ans;
 }
