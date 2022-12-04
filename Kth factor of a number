@@ -1,0 +1,46 @@
+//solution 1
+
+//this gives TLE
+
+#include <bits/stdc++.h> 
+int kthFactor(int n, int k) {
+    vector<int> v;
+    for(int i=1;i<=n/2;i++){
+        if(n%i==0) v.push_back(i);
+    }
+    v.push_back(n);
+    if(v.size()<k) return -1;
+    return v[k-1];
+}
+
+
+
+
+//solution 2
+
+
+#include <bits/stdc++.h> 
+int kthFactor(int n, int k) {
+    vector<int> v;
+   
+    for(int i=1;i*i<=n;i++){
+        if(n%i==0){
+            v.push_back(i);
+            if(i*i!=n)
+                v.push_back(n/i);
+        }
+    }
+    sort(v.begin(),v.end());
+    if(v.size()<k) return -1;
+    return v[k-1];
+}
+
+
+
+description:  in solution 2, the method is, suppose the given number is 36. So basically its factors are 1,2,3,4,6,9,12,18,36. Notice that they are in pair, 
+    like.......(1,36);(2,18);(3,12);(4,9) and (6,6).. see that 6 makes pair with itself..... both the element of the pairs are factor. so if we run the loop till square root
+    of the number and store the particular iterator if number%iterator==0 and also store the number/iterator, so that we dont have to run loop again for the next section 
+    of the square root iterator.   so hence we get a array and we sort it and we got the result, now see, there is an edge case, if iterator*iterator becomes exactly equal 
+    to the number then we will store the number itself twice in the array, so make a condition that number/iterator will only be stored when iterator*iterator is not equal
+    to the given number....
+
