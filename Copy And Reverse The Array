@@ -1,0 +1,8 @@
+childish questions :)
+
+
+#include <bits/stdc++.h> 
+vector<int> copyAndReverse(vector<int> arr, int n) {
+	reverse(arr.begin(),arr.end());
+    return arr;
+}	
