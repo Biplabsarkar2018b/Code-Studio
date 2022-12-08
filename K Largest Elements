@@ -1,0 +1,33 @@
+solution 1----------TLE
+
+#include<bits/stdc++.h>
+vector<int> Klargest(vector<int> &a, int k, int n) {
+   vector<int> ans;
+    priority_queue<int> pq;
+    
+    for(int i=0;i<n;i++){
+        pq.push(a[i]);
+    }
+    
+    for(int j=0;j<k;j++){
+        ans.push_back(pq.top());
+        pq.pop();
+    }
+    sort(ans.begin(),ans.end());
+    return ans;
+}
+
+
+solutiion 2 accepted
+
+#include<bits/stdc++.h>
+vector<int> Klargest(vector<int> &a, int k, int n) {
+   
+    
+    sort(a.begin(),a.end(),greater<int>());
+    while(a.size()>k){
+        a.pop_back();
+        }
+    reverse(a.begin(),a.end());
+    return a;
+}
