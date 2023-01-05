@@ -1,0 +1,35 @@
+#include <bits/stdc++.h> 
+// int helper(int curr,vector<int>&dp){
+//     if(curr==0) return 1;
+//     if(curr==1) return 1;
+//     if(dp[curr]!=-1) return dp[curr];
+//     return dp[curr] = (helper(curr-1,dp)+helper(curr-2,dp))%1000000007;
+// }
+
+
+int countDistinctWays(int nStairs) {
+//     vector<int> dp(nStairs+1,-1);
+//     return helper(nStairs,dp);
+    
+//     solution 2
+//     vector<int> dp(nStairs+1,-1);
+    
+//     dp[0] = 1;
+//     dp[1] = 1;
+//     for(int i=2;i<=nStairs;i++){
+//         dp[i] = (dp[i-1] + dp[i-2])%1000000007;
+//     }
+//     return dp[nStairs];
+    
+//     solution 3
+    
+    int prev2 = 1;
+    int prev1 = 1;
+    int res;
+    for(int i=2;i<=nStairs;i++){
+        res = (prev2+prev1)%1000000007;
+        prev2 = prev1%1000000007;
+        prev1 = res%1000000007;
+    }
+    return prev1;
+}
